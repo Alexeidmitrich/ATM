@@ -19,7 +19,7 @@ public class Bank {
         int len = 6;
         boolean nonUnigue;
         do {
-            uuid = " ";
+            uuid = "";
             for (int c = 0; c < len; c++) {
                 uuid += ((Integer) rng.nextInt(10)).toString();
             }
@@ -45,10 +45,11 @@ public class Bank {
                 uuid += ((Integer) rng.nextInt(10)).toString();
             }
             nonUnigue = false;
-            for (Account a: this.accounts) {
-                if (uuid.compareTo(a.getUUID()) == 0) ;
-                nonUnigue = true;
-                break;
+            for (Account a : this.accounts) {
+                if (uuid.compareTo(a.getUUID()) == 0) {
+                    nonUnigue = true;
+                    break;
+                }
             }
         }
         while (nonUnigue) ;
@@ -70,11 +71,11 @@ public class Bank {
 
     public User userLogin (String userID, String pin) {
         for (User u: this.users) {
-           if (u.getUUID().compareTo(userID) == 0 && u.validatePin(pin)) {
-               return  u;
-           }
+            if (u.getUUID().compareTo(userID) == 0 && u.validatePin(pin)) {
+                return u;
+            }
         }
-        return  null;
+        return null;
     }
 
     public String getName() {

@@ -12,9 +12,6 @@ public class Account {
 
         this.uuid = theBank.getNewAccountUUID();
         this.transactions = new ArrayList<Transaction>();
-
-        holder.addAccount(this);
-        theBank.addAccount(this);
     }
 
     public String getUUID() {
@@ -44,7 +41,7 @@ public class Account {
         System.out.printf("\nTransaction history for account %s\n",
                 this.uuid);
         for (int t = this.transactions.size() - 1; t >=0; t--){
-            System.out.printf(this.transactions.get(t).getSummaryLine());
+            System.out.println(this.transactions.get(t).getSummaryLine());
         }
         System.out.println();
     }

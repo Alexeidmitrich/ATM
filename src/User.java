@@ -38,10 +38,9 @@ public class User {
     public boolean validatePin(String aPin) {
         try {
             MessageDigest md = MessageDigest.getInstance("MD5");
-            return MessageDigest.isEqual(md.digest(aPin.getBytes()),
-                    this.pinHash);
+            return MessageDigest.isEqual(md.digest(aPin.getBytes()), this.pinHash);
         } catch (NoSuchAlgorithmException e) {
-            System.err.println("error, caugth NoSuchAlgorithmException");
+            System.err.println("error: caught NoSuchAlgorithmException");
             e.printStackTrace();
             System.exit(1);
         }
@@ -53,9 +52,9 @@ public class User {
     }
 
     public void printAccountsSummary() {
-        System.out.printf("\n\n%s`s accounts summary", this.firstName);
+        System.out.printf("\n\n%s`s accounts summary\n", this.firstName);
         for (int a = 0; a < this.accounts.size(); a++) {
-            System.out.printf("%d) %s\n", a+1,
+            System.out.printf("  %d) %s\n", a+1,
                     this.accounts.get(a).getSummaryLine());
         }
         System.out.println();
